@@ -160,16 +160,13 @@
           </div>
 
           <!-- Camera Calibration -->
-          <h3 class="title is-4 has-text-weight-semibold mb-4">📷 Camera Calibration via Pose-Conditioned 3D Gaussians</h3>
+          <h3 class="title is-4 has-text-weight-semibold mb-4">📷 Camera Calibration via Analysis-by-Synthesis</h3>
           <div class="content mb-6" style="display: inline-block; max-width: 720px; text-align: center;">
             <img src="./static/images/method/cc.gif" width="100%" class="center-img mb-4" style="border-radius: 12px; box-shadow: 0 6px 15px rgba(0,0,0,0.1);" />
             <p>
-              We automatically infer the robot’s 3D position and orientation in the camera frame using a novel two-step approach:
+              We estimate the camera-to-robot transformation from RGB or RGB-D videos using an analysis-by-synthesis approach. By fitting a pose-conditioned 3D Gaussian model derived from the robot’s URDF, we align rendered images to the video frames based on known joint angles. This alignment enables robust recovery of the camera’s extrinsic parameters, a critical step in our Real2Sim pipeline.
             </p>
-            <ol style="margin-left: 1.2rem; text-align: left;">
-              <li>Fit pose-conditioned 3D Gaussian models tailored to the specific robot model within the simulation environment.</li>
-              <li>Optimize the robot’s base translation and orientation by differentiably rendering the Gaussian model, conditioned on annotated joint angles, and aligning it with the input video frame.</li>
-            </ol>
+           
           </div>
 
           <!-- Background Inpainting and 3D Asset Generation -->
