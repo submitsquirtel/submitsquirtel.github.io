@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>RobotArena</title>
+
+  <!-- Corrected Google Fonts link -->
+  <link href="https://fonts.googleapis.com/css2?family=Google+Sans&family=Noto+Sans&family=Castoro&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css" />
+  <link rel="stylesheet" href="./static/css/bulma.min.css" />
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css" />
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css" />
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css" />
+  <link rel="stylesheet" href="./static/css/index.css" />
+
+  <link rel="icon" href="./static/images/logo.png" />
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+
+  <style>
+    .morphing-text {
+      background-image: linear-gradient(
+        to right,
+        #f39c12 0%,
+        #e67e22 25%,
+        #d35400 75%,
+        #f1c40f 100%
+      );
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      color: transparent;
+    }
+
+    .center-img {
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  </style>
+</head>
+
+<body>
+ <!-- Include Cinzel Font -->
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&display=swap" rel="stylesheet">
+
+<!-- Section 1: Hero Banner -->
+<section class="section py-6">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column has-text-centered">
+
+        <!-- Project Title -->
+        <h1 class="title is-1 has-text-weight-bold has-text-dark mb-4" style="text-shadow: 2px 2px 6px rgba(216, 120, 11, 0.35);">
+          <span class="model-name" style="
+            font-family: 'Cinzel', serif;
+            font-weight: 700;
+            letter-spacing: 2px;
+            background: linear-gradient(90deg, #d8780b, #f4b942);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: inline-block;
+            padding: 0 0.25em;
+            border-radius: 4px;
+            box-shadow: 0 4px 10px rgba(216, 120, 11, 0.3);
+          ">
+            RobotArena
+          </span>
+        </h1>
+
+        <!-- Subtitle -->
+        <h2 class="subtitle is-4 has-text-grey-dark mb-5" style="font-weight: 600; letter-spacing: 0.5px; max-width: 520px; margin: 0 auto; line-height: 1.5; color: #5a5a5a;">
+          Towards Unlimited Robot Evaluation via<br>
+          <span style="font-style: italic; color: #a36f00;">Demonstration-to-Simulation Translation</span>
+        </h2>
+
+        <!-- Submission Info -->
+        <p class="is-size-5 has-text-weight-medium has-text-link" style="font-weight: 600; letter-spacing: 0.2px; text-shadow: 1px 1px 3px rgba(101, 105, 115, 0.2);">
+          NeurIPS Submission #609
+        </p>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+
+  <!-- Section 2: Teaser -->
+  <section class="hero is-white py-6">
+    <div class="container is-max-desktop">
+      <div class="hero-body has-text-centered" style="animation: fadeInUp 0.8s ease-out;">
+        
+        <!-- Teaser Image -->
+        <figure class="image is-3by2 mb-5" style="max-width: 100%;">
+          <img src="./static/images/teaser.gif" alt="Teaser GIF" style="border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.1);">
+        </figure>
+        
+        <!-- Description -->
+        <h2 class="title is-4 has-text-dark">
+          <span class="model-name" style="font-family: 'Cinzel', serif; color: #d8780b;"><b>RobotArena</b></span>
+          is an <b>automated robotics benchmark</b> that generates simulation environments from real-world demonstrations and enables <b>end-to-end manipulation policy evaluation without human intervention.
+        </h2>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 3: Abstract -->
+  <section style="margin-top: -5pt;" class="section">
+    <div class="container is-max-desktop">
+
+      <!-- Abstract -->
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">🧩&nbsp;&nbsp; Abstract &nbsp;&nbsp;🧩</h2>
+          <div class="content has-text-justified" style="font-size: 1rem; line-height: 1.6;">
+            <p>
+              With rapid advances in robot manipulation and growing momentum across academia and industry to develop robot generalists—instructable agents capable of performing diverse tasks in dynamic environments—there is a pressing need for rigorous benchmarking frameworks to systematically assess research progress. Real-world evaluation of robot policies remains fundamentally unscalable due to logistical, safety, and reproducibility constraints, which are only exacerbated as policy capabilities grow in task breadth and complexity.
+              While several simulation benchmarks for manipulation exist, they are primarily tailored for policies trained and tested within the same simulated domains. As such, they fall short in evaluating generalist robot policies that are trained predominantly on real-world data.
+              To address these limitations, we propose a scalable benchmarking framework for evaluating robot manipulation policies in simulation. Our approach leverages recent advances in vision-language models, 3D generative modeling, and differentiable rendering to build a reality-to-simulation framework that automatically translates video demonstrations from widely-used robot datasets into simulated counterparts. Within these simulation twins, we enable zero-shot policy evaluation and automated success scoring in a physics engine—entirely without human intervention.
+              We systematically perturb the simulated scenes across multiple axes—camera viewpoints, background textures, object placements, lighting conditions—to assess generalization and robustness. The result is a controlled yet richly varied suite of evaluation scenarios that meaningfully stress-test the adaptability of several publicly released robot generalists. We thoroughly evaluate the suitability and representability of simulation for benchmarking the real world capabilities of robot policies.
+              Our work represents a significant step toward reproducible, scalable, and fair evaluation in robotic manipulation.
+            </p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+  <!-- Section 3: Method -->
+  <section class="section">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column is-full-width has-text-centered">
+
+          <!-- Overview -->
+          <h3 class="title is-4 has-text-weight-semibold mb-4">⚙️ Overview</h3>
+          <div class="content mb-6" style="display: inline-block; max-width: 720px; text-align: center;">
+            <img src="./static/images/method/method.png" width="100%" class="center-img mb-4" style="border-radius: 12px; box-shadow: 0 6px 15px rgba(0,0,0,0.1);" />
+            <p>
+              <span class="model-name" style="font-family: 'Cinzel', serif; color: #d8780b;"><b>RobotArena</b></span> automatically generates high-fidelity simulated environments from real-world scenes and enables controlled, perturbed evaluation of vision-language agents (VLAs) — all without explicit human intervention. This automated pipeline ensures reproducible and scalable benchmarking for robotic manipulation policies.
+            </p>
+          </div>
+
+          <!-- Real2Sim -->
+          <h3 class="title is-4 has-text-weight-semibold mb-4">🎥 Real2Sim: Automated Video-to-Simulation Translation</h3>
+          <div class="content mb-6" style="display: inline-block; max-width: 720px; text-align: center;">
+            <img src="./static/images/method/real2sim.png" width="100%" class="center-img mb-4" style="border-radius: 12px; box-shadow: 0 6px 15px rgba(0,0,0,0.1);" />
+<p>
+  Given a scene from a robotic dataset, <span class="model-name" style="font-family: 'Cinzel', serif; color: #d8780b;"><b>RobotArena</b></span> automatically reconstructs a highly detailed simulated environment. This real-to-sim translation enables effective evaluation of policies trained on real-world data.
+</p>
+
+          </div>
+
+          <!-- Camera Calibration -->
+          <h3 class="title is-4 has-text-weight-semibold mb-4">📷 Camera Calibration via Pose-Conditioned 3D Gaussians</h3>
+          <div class="content mb-6" style="display: inline-block; max-width: 720px; text-align: center;">
+            <img src="./static/images/method/cc.gif" width="100%" class="center-img mb-4" style="border-radius: 12px; box-shadow: 0 6px 15px rgba(0,0,0,0.1);" />
+            <p>
+              We automatically infer the robot’s 3D position and orientation in the camera frame using a novel two-step approach:
+            </p>
+            <ol style="margin-left: 1.2rem; text-align: left;">
+              <li>Fit pose-conditioned 3D Gaussian models tailored to the specific robot model within the simulation environment.</li>
+              <li>Optimize the robot’s base translation and orientation by differentiably rendering the Gaussian model, conditioned on annotated joint angles, and aligning it with the input video frame.</li>
+            </ol>
+          </div>
+
+          <!-- Background Inpainting and 3D Asset Generation -->
+          <h3 class="title is-4 has-text-weight-semibold mb-4">🎨 Background Inpainting & 3D Asset Generation</h3>
+          <div class="content mb-6" style="display: inline-block; max-width: 720px; text-align: center;">
+            <img src="./static/images/method/back.png" width="100%" class="center-img mb-4" style="border-radius: 12px; box-shadow: 0 6px 15px rgba(0,0,0,0.1);" />
+            <p>
+              Leveraging multimodal large language models (LLMs), we segment robots and objects in the scene. Subsequently, we inpaint occluded backgrounds and generate 3D object meshes from these segments. Using the image, segmentation masks, and estimated camera extrinsics, we accurately recover object scale and pose, faithfully replicating real-world scenes within simulation.
+            </p>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+<!-- Section 4: Object Results -->
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+
+        <h2 class="title is-3 has-text-centered">
+          📝&nbsp;&nbsp; Real2Sim Generated Environments &nbsp;&nbsp;📝
+        </h2>
+
+        <div style="text-align: center;">
+          <table style="width: 100%; border-collapse: separate; border-spacing: 2rem;">
+            <thead>
+              <tr>
+                <th style="text-align: center; font-weight: bold;">Real (GT)</th>
+                <th style="text-align: center; font-weight: bold;">Sim (Ours)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- Loop from 0 to 9 -->
+              <tr>
+                <td style="vertical-align: top; text-align: center;">
+                  <img src="./static/images/scene/gt/0.gif" alt="GT 0" style="max-width: 100%; border-radius: 8px;" />
+                </td>
+                <td style="vertical-align: top; text-align: center;">
+                  <img src="./static/images/scene/ours/0.gif" alt="Ours 0" style="max-width: 100%; border-radius: 8px;" />
+                </td>
+              </tr>
+              <tr>
+                <td style="vertical-align: top; text-align: center;">
+                  <img src="./static/images/scene/gt/1.gif" alt="GT 1" style="max-width: 100%; border-radius: 8px;" />
+                </td>
+                <td style="vertical-align: top; text-align: center;">
+                  <img src="./static/images/scene/ours/1.gif" alt="Ours 1" style="max-width: 100%; border-radius: 8px;" />
+                </td>
+              </tr>
+              <tr>
+                <td style="vertical-align: top; text-align: center;">
+                  <img src="./static/images/scene/gt/2.gif" alt="GT 2" style="max-width: 100%; border-radius: 8px;" />
+                </td>
+                <td style="vertical-align: top; text-align: center;">
+                  <img src="./static/images/scene/ours/2.gif" alt="Ours 2" style="max-width: 100%; border-radius: 8px;" />
+                </td>
+              </tr>
+              <tr>
+                <td style="vertical-align: top; text-align: center;">
+                  <img src="./static/images/scene/gt/3.gif" alt="GT 3" style="max-width: 100%; border-radius: 8px;" />
+                </td>
+                <td style="vertical-align: top; text-align: center;">
+                  <img src="./static/images/scene/ours/3.gif" alt="Ours 3" style="max-width: 100%; border-radius: 8px;" />
+                </td>
+              </tr>
+              <tr>
+                <td style="vertical-align: top; text-align: center;">
+                  <img src="./static/images/scene/gt/4.gif" alt="GT 4" style="max-width: 100%; border-radius: 8px;" />
+                </td>
+                <td style="vertical-align: top; text-align: center;">
+                  <img src="./static/images/scene/ours/4.gif" alt="Ours 4" style="max-width: 100%; border-radius: 8px;" />
+                </td>
+              </tr>
+              <tr>
+                <td style="vertical-align: top; text-align: center;">
+                  <img src="./static/images/scene/gt/5.gif" alt="GT 5" style="max-width: 100%; border-radius: 8px;" />
+                </td>
+                <td style="vertical-align: top; text-align: center;">
+                  <img src="./static/images/scene/ours/5.gif" alt="Ours 5" style="max-width: 100%; border-radius: 8px;" />
+                </td>
+              </tr>
+              <tr>
+                <td style="vertical-align: top; text-align: center;">
+                  <img src="./static/images/scene/gt/6.gif" alt="GT 6" style="max-width: 100%; border-radius: 8px;" />
+                </td>
+                <td style="vertical-align: top; text-align: center;">
+                  <img src="./static/images/scene/ours/6.gif" alt="Ours 6" style="max-width: 100%; border-radius: 8px;" />
+                </td>
+              </tr>
+              <tr>
+                <td style="vertical-align: top; text-align: center;">
+                  <img src="./static/images/scene/gt/7.gif" alt="GT 7" style="max-width: 100%; border-radius: 8px;" />
+                </td>
+                <td style="vertical-align: top; text-align: center;">
+                  <img src="./static/images/scene/ours/7.gif" alt="Ours 7" style="max-width: 100%; border-radius: 8px;" />
+                </td>
+              </tr>
+              <tr>
+                <td style="vertical-align: top; text-align: center;">
+                  <img src="./static/images/scene/gt/8.gif" alt="GT 8" style="max-width: 100%; border-radius: 8px;" />
+                </td>
+                <td style="vertical-align: top; text-align: center;">
+                  <img src="./static/images/scene/ours/8.gif" alt="Ours 8" style="max-width: 100%; border-radius: 8px;" />
+                </td>
+              </tr>
+              <tr>
+                <td style="vertical-align: top; text-align: center;">
+                  <img src="./static/images/scene/gt/9.gif" alt="GT 9" style="max-width: 100%; border-radius: 8px;" />
+                </td>
+                <td style="vertical-align: top; text-align: center;">
+                  <img src="./static/images/scene/ours/9.gif" alt="Ours 9" style="max-width: 100%; border-radius: 8px;" />
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+
+  <!-- Section 5: Scene Results -->
+  <section class="section">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column is-full">
+  
+          <h2 class="title is-3 has-text-centered" aria-label="Automated Evaluation Using Gemini">
+            🖼️&nbsp;&nbsp;Automated Evaluation Using Gemini&nbsp;&nbsp;🖼️
+          </h2>
+  
+          <div class="images-container" style="text-align: center; margin-top: 1.5rem;">
+            <figure style="margin-bottom: 1.5rem;">
+              <img src="./static/images/method/eval5.gif" alt="Automated evaluation example animation 1" style="max-width: 100%; height: auto; border-radius: 8px;">
+            </figure>
+  
+            <figure style="margin-bottom: 1.5rem;">
+              <img src="./static/images/method/3.gif" alt="Automated evaluation example animation 2" style="max-width: 100%; height: auto; border-radius: 8px;">
+            </figure>
+            <figure style="margin-bottom: 1.5rem;">
+              <img src="./static/images/method/2.gif" alt="Automated evaluation example animation 2" style="max-width: 100%; height: auto; border-radius: 8px;">
+            </figure>
+          </div>
+  
+        </div>
+      </div>
+    </div>
+  
+
+  <!-- Section 5: Scene Results -->
+  <section class="section">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column is-full">
+
+          <h2 class="title is-3 has-text-centered" aria-label="Evaluation Results">
+            🖼️&nbsp;&nbsp;Results&nbsp;&nbsp;🖼️
+          </h2>
+
+          <figure style="text-align: center; max-width: 900px; margin: 0 auto;">
+            <img src="./static/images/method/results.png" alt="Evaluation results plots for Octo, Spatial-VLA, RoboVLM, and CogAct" style="max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+            <figcaption style="margin-top: 1rem; font-size: 0.85rem; line-height: 1.4; color: #6b6b6b; max-width: 700px; margin-left: auto; margin-right: auto; text-align: center;">
+              Finally, we show evaluation results for Octo, Spatial-VLA, RoboVLM, and CogAct tested in the Robot Arena. Plots illustrate the robustness of each policy on the <em>Bridge Base All</em> dataset, containing 20 scenes along with their perturbed variations. Scores are averaged across all scenes.<br>
+              (a) GVLAM: mean progress over full trajectory.<br>
+              (b) GVLT30: mean over top 30% of high-progress frames.<br>
+              (c) GVLL30: mean over final 30% of frames.
+            </figcaption>
+          </figure>
+
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Section -1: Footer -->
+  <footer class="footer">
+    <div class="container">
+
+      <!-- Copyright -->
+      <div class="columns is-centered">
+        <div class="column is-8">
+          <div class="content">
+            <p style="text-align: center">
+              Website template is borrowed from <a href="https://nerfies.github.io">Nerfies</a>.
+              Thanks for their effort.
+            </p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+</body>
+
+</html>
